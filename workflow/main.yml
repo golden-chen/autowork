@@ -1,0 +1,31 @@
+YAML
+
+name: Auto Update Data
+
+on:
+  schedule:
+    - cron: '0 * * * *' # 每小時執行一次
+  workflow_dispatch:      # 允許你手動點擊按鈕執行
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 檢查倉庫程式碼
+        uses: actions/checkout@v3
+
+      - name: 安裝 Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: 執行運算腳本
+        run: node update_data.js
+
+      - name: 將變更推送到 GitHub
+        run: |
+          git config --global user.name "GitHub Action"
+          git config --global user.email "action@github.com"
+          git add api/info.json
+          git commit -m "Automated data update" || exit 0
+          git push
