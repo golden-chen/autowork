@@ -1,10 +1,10 @@
-YAML
+
 
 name: Auto Update Data
 
 on:
   schedule:
-    - cron: '0 * * * *' # 每小時執行一次
+    - cron: '*/15 * * * *' # 每小時執行一次
   workflow_dispatch:      # 允許你手動點擊按鈕執行
 
 jobs:
