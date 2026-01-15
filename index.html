@@ -12,7 +12,7 @@
       // 只显示最近 5 笔记录
       data.slice(-5).reverse().forEach(item => {
         const li = document.createElement('li');
-        li.textContent = `${item.time}: ${item.message}`;
+        li.textContent = `${item.time}: ${item.value}`;
         list.appendChild(li);
       });
     })
