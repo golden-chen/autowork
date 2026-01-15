@@ -1,7 +1,7 @@
 const fs = require('fs');
 
 // 1. 读取旧数据
-let rawData = fs.readFileSync('./info.json');
+let rawData = fs.readFileSync('./api/info.json');
 let dataList = JSON.parse(rawData); 
 
 // 2. 准备新数据
@@ -15,4 +15,4 @@ const newItem = {
 dataList.push(newItem);
 
 // 4. 写回文件
-fs.writeFileSync('./info.json', JSON.stringify(dataList, null, 2));
+fs.writeFileSync('./api/info.json', JSON.stringify(dataList, null, 2));
